@@ -23,6 +23,10 @@ int printer(int arr[10][20]){
            if(arr[i][j]==1){
                 printf("O");
            }
+           if(arr[i][j]==8||arr[i][j]==10||arr[i][j]==12||arr[i][j]==15){
+                printf("+");
+           }
+
            
 
         }
@@ -32,63 +36,41 @@ return 0;
 
 }
 int ball_bounce(int arr[10][20]){
-    int j =0;
+    int j =1;
     int ydir=1;
     int xdir=1;
-    int i =0;
-    while(i<10&&j<20&&i>=0&&j>=0){
-        
-         arr[i][j]=0;
-         arr[i+ydir][j+xdir]=1;
-         if (arr[i-2*(xdir)][j-2*(ydir)]==4)
-         {
-          ydir=1;
-         }
-         if (arr[i+2*(xdir)][j+2*(ydir)]==5)
-         {
-          ydir=-1;
-         }
-         if (arr[i+2*(xdir)][j+2*(ydir)]==2)
-         {
-          xdir=1;
-         }
-         if (arr[i+2*(xdir)][j+2*(ydir)]==3)
-         {
-          xdir=-1;
-         }
-          if (xdir==1)
-         {
-          j++;
-         }
-         if (xdir==-1)
-         {
-          j--;
-         }
-         if (ydir==1)
-         {
-          i++;
-         }
-          if(ydir==-1){
-          i--;
-         }
-         
-         
-         
-         
-         
-         
-         system("cls");
-         
-         printer(arr);
-         Sleep(150);
-
+    int i =1;
+    arr[i][j]=1;
+    int ni =0;
+    int nj =0;
+    while(i<9&&j<19&&i>=0&&j>=0){
+           system("cls");
+           printer(arr);
+           Sleep(150);
+           arr[i][j]=0;
+           ni=i+ydir;
+           nj=j+xdir;
+          if (arr[ni][nj]==5||arr[ni][nj]==4){
+               ydir=-ydir;
+          }
+          if (arr[ni][nj]==3||arr[ni][nj]==2){
+               xdir=-xdir;
+          }
+          if (arr[ni][nj]==8||arr[ni][nj]==12||arr[ni][nj]==15||arr[ni][nj]==10){
+               ydir=-ydir;
+               xdir=-xdir;
+          }
+          i+=ydir;
+          j+=xdir;
+          arr[i][j]=1;
+          
     }
     return 0;
 }
 int main(){
      int arr[10][20]={
     //   1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 20
-        {2,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3},
+        {8,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,12},
         {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
         {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
         {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
@@ -97,7 +79,7 @@ int main(){
         {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
         {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
         {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3},
-        {2,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3}
+        {10,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,15}
 
     };
     
