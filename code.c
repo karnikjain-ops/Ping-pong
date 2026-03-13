@@ -2,7 +2,21 @@
 #include<windows.h>
 
 
+int bat(int arr[10][20]){
+    static int i = 4;
 
+    arr[i][18] = 0;
+
+    if (GetAsyncKeyState(VK_UP) & 0x8000){
+        i--;
+    }
+
+    if (GetAsyncKeyState(VK_DOWN) & 0x8000){
+        i++;
+    }
+
+    arr[i][18] = 3;
+}
 int printer(int arr[10][20]){
         for (int i = 0; i < 10; i++)
         {   
@@ -63,6 +77,7 @@ int ball_bounce(int arr[10][20]){
           i+=ydir;
           j+=xdir;
           arr[i][j]=1;
+          bat(arr);
           
     }
     return 0;
